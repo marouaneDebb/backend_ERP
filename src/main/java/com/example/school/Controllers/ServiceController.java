@@ -1,5 +1,6 @@
 package com.example.school.Controllers;
 
+<<<<<<< HEAD
 import com.example.school.Entities.Remise;
 import com.example.school.Entities.Service;
 import com.example.school.Repositories.RemiseRepository;
@@ -9,10 +10,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+=======
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+>>>>>>> 067d19ee813611a13a609e57297e634d9bdd7589
 
 @RestController
 @RequestMapping("/service")
 public class ServiceController {
+<<<<<<< HEAD
     @Autowired
     private ServiceRepository serviceRepository;
     @GetMapping
@@ -42,4 +48,6 @@ public class ServiceController {
     public void deleteService(@PathVariable Long serviceId){
         serviceRepository.deleteById(serviceId);
     }
+=======
+>>>>>>> 067d19ee813611a13a609e57297e634d9bdd7589
 }

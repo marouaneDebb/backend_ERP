@@ -1,5 +1,6 @@
 package com.example.school.Controllers;
 
+<<<<<<< HEAD
 import com.example.school.Entities.Eleve;
 import com.example.school.Entities.Parent;
 import com.example.school.Repositories.EleveRepository;
@@ -9,10 +10,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+=======
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+>>>>>>> 067d19ee813611a13a609e57297e634d9bdd7589
 
 @RestController
 @RequestMapping("/parent")
 public class ParentController {
+<<<<<<< HEAD
     @Autowired
     private ParentRepository parentRepository;
     @GetMapping
@@ -42,4 +48,6 @@ public class ParentController {
     public void deleteParent(@PathVariable Long parentId){
         parentRepository.deleteById(parentId);
     }
+=======
+>>>>>>> 067d19ee813611a13a609e57297e634d9bdd7589
 }
