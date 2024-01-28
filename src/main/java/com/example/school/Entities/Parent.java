@@ -15,7 +15,9 @@ import java.util.List;
 public class Parent {
     @Id
     private String cinParent;
+    @Column(nullable = false)
     private String nom;
+    @Column(nullable = false)
     private String prenom;
     private String email;
     private String phoneNumber;

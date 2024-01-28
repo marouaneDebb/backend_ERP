@@ -23,7 +23,7 @@ public class ParentController {
     }
 
     @GetMapping("/{parentId}")
-    public Optional<Parent> getParentById(@PathVariable Long parentId){
+    public Optional<Parent> getParentById(@PathVariable String parentId){
         return parentRepository.findById(parentId);
     }
 
@@ -33,7 +33,7 @@ public class ParentController {
     }
 
     @PutMapping("/parentId")
-    public void updateParent(@RequestBody Parent parent, @PathVariable Long parentId){
+    public void updateParent(@RequestBody Parent parent, @PathVariable String parentId){
         parentRepository.findById(parentId).map(parent1 -> {
 
             return parentRepository.save(parent1);
@@ -41,7 +41,7 @@ public class ParentController {
     }
 
     @DeleteMapping("/parentId")
-    public void deleteParent(@PathVariable Long parentId){
+    public void deleteParent(@PathVariable String parentId){
         parentRepository.deleteById(parentId);
     }
 }

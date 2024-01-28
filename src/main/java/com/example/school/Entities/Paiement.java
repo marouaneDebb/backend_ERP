@@ -1,12 +1,10 @@
 package com.example.school.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDate;
 
@@ -16,14 +14,22 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Paiement {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPaiement;
     private LocalDate dateTransaction;
-    private Long montant;
+    @Column(nullable = false)
+    private double montant;
+    public Paiement(Eleve eleve){
+        this.eleve = eleve;
+    }
+
+    @ToString.Exclude
     @ManyToOne
-    @JoinColumn(name = "eleveId")
+    @JoinColumn(name = "eleveId", nullable = false)
     private Eleve eleve;
 
     @ManyToOne
     @JoinColumn(name = "factureId")
+
     private Facture facture;
 }
