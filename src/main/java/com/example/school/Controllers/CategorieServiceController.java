@@ -30,9 +30,9 @@ public class CategorieServiceController {
     }
 
     @PutMapping("/categorieServiceId")
-    public void updateEleve(@RequestBody Eleve categorieService, @PathVariable Long categorieServiceId){
+    public void updateEleve(@RequestBody CategorieService categorieService, @PathVariable Long categorieServiceId){
         categorieServiceRepository.findById(categorieServiceId).map(categorieService1 -> {
-
+            categorieService1.setNomCategorie(categorieService.getNomCategorie());
             return categorieServiceRepository.save(categorieService1);
         });
     }

@@ -15,6 +15,9 @@ import java.util.List;
 public class Service {
     @Id
     private Long idService;
+    private String nomService;
+    private Long montant;
+    private String periodicite;
 
     @OneToMany
     List<Remise> remises=new ArrayList<>();

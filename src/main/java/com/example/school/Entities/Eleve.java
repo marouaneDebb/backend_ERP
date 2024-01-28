@@ -5,8 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @Entity
 @Data
@@ -15,6 +17,9 @@ import java.util.List;
 public class Eleve {
     @Id
     private Long idEleve;
+    private String nom;
+    private String prenom;
+    private LocalDate dateNaissance;
 
     @ManyToOne
     @JoinColumn(name = "parentCIN",nullable = false)

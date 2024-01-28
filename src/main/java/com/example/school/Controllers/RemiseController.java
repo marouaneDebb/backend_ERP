@@ -1,6 +1,5 @@
 package com.example.school.Controllers;
 
-<<<<<<< HEAD
 import com.example.school.Entities.Parent;
 import com.example.school.Entities.Remise;
 import com.example.school.Repositories.ParentRepository;
@@ -10,15 +9,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-=======
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
->>>>>>> 067d19ee813611a13a609e57297e634d9bdd7589
 
 @RestController
 @RequestMapping("/remise")
 public class RemiseController {
-<<<<<<< HEAD
     @Autowired
     private RemiseRepository remiseRepository;
     @GetMapping
@@ -39,7 +33,8 @@ public class RemiseController {
     @PutMapping("/remiseId")
     public void updateRemise(@RequestBody Remise remise, @PathVariable Long remiseId){
         remiseRepository.findById(remiseId).map(remise1 -> {
-
+            remise1.setDescription(remise.getDescription());
+            remise1.setPourcentage(remise.getPourcentage());
             return remiseRepository.save(remise1);
         });
     }
@@ -51,6 +46,3 @@ public class RemiseController {
 }
 
 
-=======
-}
->>>>>>> 067d19ee813611a13a609e57297e634d9bdd7589
