@@ -1,9 +1,6 @@
 package com.example.school.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,13 +14,13 @@ import java.util.List;
 @NoArgsConstructor
 public class Parent {
     @Id
-    private Long cinParent;
+    private String cinParent;
     private String nom;
     private String prenom;
     private String email;
     private String phoneNumber;
     private String adress;
 
-    @OneToMany(mappedBy = "parent")
+    @OneToMany(mappedBy = "parent" ,fetch = FetchType.EAGER)
     List<Eleve> eleves =new ArrayList<>();
 }

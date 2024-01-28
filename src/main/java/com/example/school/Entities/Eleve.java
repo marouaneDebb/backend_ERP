@@ -14,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Eleve {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEleve;
 
     @ManyToOne

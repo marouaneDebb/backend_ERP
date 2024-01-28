@@ -1,6 +1,6 @@
 package com.example.school.Controllers;
 
-<<<<<<< HEAD
+
 import com.example.school.Entities.Facture;
 import com.example.school.Entities.Remise;
 import com.example.school.Repositories.FactureRepository;
@@ -10,15 +10,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-=======
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
->>>>>>> 067d19ee813611a13a609e57297e634d9bdd7589
 
 @RestController
 @RequestMapping("/facture")
 public class FactureController {
-<<<<<<< HEAD
     @Autowired
     private FactureRepository factureRepository;
     @GetMapping
@@ -48,6 +46,4 @@ public class FactureController {
     public void deleteFacture(@PathVariable Long factureId){
         factureRepository.deleteById(factureId);
     }
-=======
->>>>>>> 067d19ee813611a13a609e57297e634d9bdd7589
 }
