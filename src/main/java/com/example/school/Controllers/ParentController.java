@@ -35,7 +35,11 @@ public class ParentController {
     @PutMapping("/parentId")
     public void updateParent(@RequestBody Parent parent, @PathVariable String parentId){
         parentRepository.findById(parentId).map(parent1 -> {
-
+            parent1.setCinParent(parent.getCinParent());
+            parent1.setNom(parent.getNom());
+            parent1.setPrenom(parent.getPrenom());
+            parent1.setAdress(parent.getAdress());
+            parent1.setEmail(parent.getEmail());
             return parentRepository.save(parent1);
         });
     }

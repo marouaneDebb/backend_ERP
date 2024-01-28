@@ -1,5 +1,6 @@
 package com.example.school.Entities;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

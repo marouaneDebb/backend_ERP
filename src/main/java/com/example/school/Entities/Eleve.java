@@ -6,9 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 @Entity
 @Data
@@ -22,11 +24,11 @@ public class Eleve {
     private String nom;
     @Column(nullable = false)
     private String prenom;
-    private Date dateNaissance;
 
     public Eleve(Parent parent){
         this.parent =parent;
     }
+    private LocalDate dateNaissance;
 
     @ManyToOne
     @JoinColumn(name = "parentCIN",nullable = false)

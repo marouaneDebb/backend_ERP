@@ -65,7 +65,7 @@ public class SchoolApplication {
 
             Service natation = new Service(categorieService);
             natation.setMontant(23);
-            natation.setNom("natation");
+            natation.setNomService("natation");
             natation.getEleves().add(eleve);
             natation.getEleves().add(eleve2);
             natation.getEleves().add(eleve2);

@@ -2,15 +2,12 @@ package com.example.school.Controllers;
 
 
 import com.example.school.Entities.Facture;
-import com.example.school.Entities.Remise;
 import com.example.school.Repositories.FactureRepository;
-import com.example.school.Repositories.RemiseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,7 +34,8 @@ public class FactureController {
     @PutMapping("/factureId")
     public void updateFacture(@RequestBody Facture facture, @PathVariable Long factureId){
         factureRepository.findById(factureId).map(facture1 -> {
-
+            facture1.setDateFacturation(facture.getDateFacturation());
+            facture1.setMontant(facture.getMontant());
             return factureRepository.save(facture1);
         });
     }

@@ -17,11 +17,12 @@ public class Service {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idService;
-    private String nom;
     private double montant;
     public Service(CategorieService categorieService) {
         this.categorieService = categorieService;
     }
+    private String nomService;
+    private String periodicite;
 
     @OneToMany(mappedBy="service" ,fetch= FetchType.EAGER)
     List<Remise> remises=new ArrayList<>();

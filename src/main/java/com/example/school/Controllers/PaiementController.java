@@ -1,9 +1,7 @@
 package com.example.school.Controllers;
 
 import com.example.school.Entities.Paiement;
-import com.example.school.Entities.Parent;
 import com.example.school.Repositories.PaiementRepository;
-import com.example.school.Repositories.ParentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
 @RequestMapping("/paiement")
@@ -35,7 +34,8 @@ public class PaiementController {
     @PutMapping("/paiementId")
     public void updatePaiement(@RequestBody Paiement paiement, @PathVariable Long paiementId){
         paiementRepository.findById(paiementId).map(paiement1 -> {
-
+            paiement1.setDateTransaction(paiement.getDateTransaction());
+            paiement1.setMontant(paiement.getMontant());
             return paiementRepository.save(paiement1);
         });
     }

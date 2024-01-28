@@ -11,7 +11,6 @@ import java.util.Optional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
 @RequestMapping("/eleve")
 public class EleveController {
@@ -36,7 +35,9 @@ public class EleveController {
     @PutMapping("/eleveId")
     public void updateEleve(@RequestBody Eleve eleve, @PathVariable Long eleveId){
         eleveRepository.findById(eleveId).map(eleve1 -> {
-
+            eleve1.setNom(eleve.getNom());
+            eleve1.setPrenom(eleve.getPrenom());
+            eleve1.setDateNaissance(eleve.getDateNaissance());
             return eleveRepository.save(eleve1);
         });
     }
@@ -45,6 +46,5 @@ public class EleveController {
     public void deleteEleve(@PathVariable Long eleveId){
         eleveRepository.deleteById(eleveId);
     }
-
 
 }

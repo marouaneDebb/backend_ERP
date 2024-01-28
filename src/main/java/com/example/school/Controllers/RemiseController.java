@@ -35,7 +35,8 @@ public class RemiseController {
     @PutMapping("/remiseId")
     public void updateRemise(@RequestBody Remise remise, @PathVariable Long remiseId){
         remiseRepository.findById(remiseId).map(remise1 -> {
-
+            remise1.setDescription(remise.getDescription());
+            remise1.setPourcentage(remise.getPourcentage());
             return remiseRepository.save(remise1);
         });
     }
@@ -45,6 +46,4 @@ public class RemiseController {
         remiseRepository.deleteById(remiseId);
     }
 }
-
-
 
