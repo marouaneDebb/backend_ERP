@@ -39,18 +39,20 @@ public class SchoolApplication {
             parentRepository.save(parent);
 
             CategorieService categorieService = new CategorieService();
+            CategorieService categorieService2 = new CategorieService();
             categorieService.setNomCategorie("Ext");
             categorieServiceRepository.save(categorieService);
+            categorieServiceRepository.save(categorieService2);
 
             Eleve eleve = new Eleve();
-            eleve.setNom("Tati");
-            eleve.setPrenom("TATITO");
+            eleve.setFirstName("Tati");
+            eleve.setLastName("TATITO");
             eleve.setParent(parent);
 
 
             Eleve eleve2 = new Eleve();
-            eleve2.setNom("TADFj");
-            eleve2.setPrenom("KIKI");
+            eleve2.setFirstName("TADFj");
+            eleve2.setLastName("KIKI");
             eleve2.setParent(parent);
             eleveRepository.save(eleve2);
             eleveRepository.save(eleve);

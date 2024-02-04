@@ -8,8 +8,5 @@ WORKDIR /backend
 
 COPY target/backend.jar /backend/backend.jar
 
-# Expose the port that the application will run on
-
-
 # Specify the command to run on container start
 CMD ["java", "-jar", "/backend/backend.jar"]

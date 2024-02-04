@@ -14,7 +14,7 @@ import java.util.Optional;
 public class CategorieServiceController {
     @Autowired
     private CategorieServiceRepository categorieServiceRepository;
-    @GetMapping
+    @GetMapping(path = "/all")
     public List<CategorieService> getCategorieServices(){
         return categorieServiceRepository.findAll();
     }

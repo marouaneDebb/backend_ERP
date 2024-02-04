@@ -11,8 +11,9 @@ import java.util.Optional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin("*")
 @RestController
-@RequestMapping("/eleve")
+@RequestMapping("/students")
 public class EleveController {
 
     @Autowired
@@ -27,7 +28,7 @@ public class EleveController {
         return eleveRepository.findById(eleveId);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public Eleve addEleve(@RequestBody Eleve eleve){
         return eleveRepository.save(eleve);
     }
@@ -35,9 +36,9 @@ public class EleveController {
     @PutMapping("/eleveId")
     public void updateEleve(@RequestBody Eleve eleve, @PathVariable Long eleveId){
         eleveRepository.findById(eleveId).map(eleve1 -> {
-            eleve1.setNom(eleve.getNom());
-            eleve1.setPrenom(eleve.getPrenom());
-            eleve1.setDateNaissance(eleve.getDateNaissance());
+            eleve1.setFirstName(eleve.getFirstName());
+            eleve1.setLastName(eleve.getLastName());
+//            eleve1.setDateNaissance(eleve.getDateNaissance());
             return eleveRepository.save(eleve1);
         });
     }
