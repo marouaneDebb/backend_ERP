@@ -12,6 +12,7 @@ import java.util.Optional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/parent")
 public class ParentController {
@@ -23,8 +24,8 @@ public class ParentController {
     }
 
     @GetMapping("/{parentId}")
-    public Optional<Parent> getParentById(@PathVariable String parentId){
-        return parentRepository.findById(parentId);
+    public Parent getParentById(@PathVariable String parentId){
+        return parentRepository.findById(parentId).get();
     }
 
     @PostMapping

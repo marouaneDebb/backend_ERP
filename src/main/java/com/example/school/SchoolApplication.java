@@ -33,7 +33,7 @@ public class SchoolApplication {
    ){
         return args -> {
             Parent parent = new Parent();
-            parent.setCinParent("3233L");
+            parent.setCinParent("PA238948");
             parent.setNom("TTo");
             parent.setPrenom("KHOKI");
             parentRepository.save(parent);

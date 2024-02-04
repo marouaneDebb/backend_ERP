@@ -5,6 +5,8 @@ import com.example.school.Repositories.EleveRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,12 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/students")
+@RequestMapping("/student")
 public class EleveController {
 
     @Autowired
     private EleveRepository eleveRepository;
-    @GetMapping
+    @GetMapping("/all")
     public List<Eleve> getEleves(){
         return eleveRepository.findAll();
     }
@@ -30,6 +32,9 @@ public class EleveController {
 
     @PostMapping("/add")
     public Eleve addEleve(@RequestBody Eleve eleve){
+        LocalDate date = eleve.getDateNaissance();
+        eleve.setDateNaissance(date);
+
         return eleveRepository.save(eleve);
     }
 
