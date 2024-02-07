@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,14 +16,15 @@ import java.util.List;
 @NoArgsConstructor
 public class Parent {
     @Id
-    private String cinParent;
+    private String CIN;
     @Column(nullable = false)
-    private String nom;
+    private String firstName;
     @Column(nullable = false)
-    private String prenom;
+    private String lastName;
     private String email;
-    private String phoneNumber;
-    private String adress;
+    private String phone;
+    private LocalDate dateInscription;
+    private String address;
 
     @OneToMany(mappedBy = "parent" ,fetch = FetchType.EAGER)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

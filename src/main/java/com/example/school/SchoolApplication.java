@@ -33,11 +33,16 @@ public class SchoolApplication {
    ){
         return args -> {
             Parent parent = new Parent();
-            parent.setCinParent("PA238948");
-            parent.setNom("TTo");
-            parent.setPrenom("KHOKI");
+            Parent parent2 = new Parent();
+            parent.setCIN("PA238948");
+            parent2.setCIN("PA238949");
+            parent.setFirstName("TTo");
+            parent2.setFirstName("Ziyad");
+            parent.setLastName("KHOKI");
+            parent2.setLastName("KHAWAKHI");
             parentRepository.save(parent);
-
+            parentRepository.save(parent2);
+//
             CategorieService categorieService = new CategorieService();
             CategorieService categorieService2 = new CategorieService();
             categorieService.setNomCategorie("Ext");
@@ -108,9 +113,9 @@ public class SchoolApplication {
  parentRepository.findAll().forEach(p->{
                 System.out.println(p);
             });
-
+//
         };
    }
-
-
+//
+//
 }

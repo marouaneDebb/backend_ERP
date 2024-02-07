@@ -3,10 +3,11 @@ FROM openjdk:17
 
 ENV MYSQL_ROOT_PASSWORD=admin\
     MYSQL_DATABASE=bd
-# Set the working directory
+
 WORKDIR /backend
 
-COPY target/backend.jar /backend/backend.jar
+COPY target/backend.jar /backend
 
-# Specify the command to run on container start
+EXPOSE 8070
+
 CMD ["java", "-jar", "/backend/backend.jar"]

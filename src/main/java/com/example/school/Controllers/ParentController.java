@@ -1,6 +1,6 @@
 package com.example.school.Controllers;
 
-import com.example.school.Entities.Eleve;
+//import com.example.school.Entities.Eleve;
 import com.example.school.Entities.Parent;
 import com.example.school.Repositories.EleveRepository;
 import com.example.school.Repositories.ParentRepository;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ParentController {
     @Autowired
     private ParentRepository parentRepository;
-    @GetMapping
+    @GetMapping("/all")
     public List<Parent> getParents(){
         return parentRepository.findAll();
     }
@@ -28,7 +28,7 @@ public class ParentController {
         return parentRepository.findById(parentId).get();
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public Parent addParent(@RequestBody Parent parent){
         return parentRepository.save(parent);
     }
@@ -36,11 +36,13 @@ public class ParentController {
     @PutMapping("/parentId")
     public void updateParent(@RequestBody Parent parent, @PathVariable String parentId){
         parentRepository.findById(parentId).map(parent1 -> {
-            parent1.setCinParent(parent.getCinParent());
-            parent1.setNom(parent.getNom());
-            parent1.setPrenom(parent.getPrenom());
-            parent1.setAdress(parent.getAdress());
+            parent1.setCIN(parent.getCIN());
+            parent1.setLastName(parent.getLastName());
+            parent1.setFirstName(parent.getFirstName());
+            parent1.setAddress(parent.getAddress());
             parent1.setEmail(parent.getEmail());
+            parent1.setDateInscription(parent.getDateInscription());
+
             return parentRepository.save(parent1);
         });
     }
