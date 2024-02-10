@@ -4,12 +4,13 @@ services:
     image: mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: admin 
-      MYSQL_DATABASE: bd 
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: bd
     ports:
-        - "3307:3306"
-    # volumes:
-    #   - ./mysql:/var/lib/mysql
+      - "3307:3306"
+    volumes:
+      - mydatabase:/var/lib/mysql
+    # Ajoutez l'option detach pour exécuter le conteneur en arrière-plan
 
   # spring-boot-app:
   #   build:
@@ -20,3 +21,5 @@ services:
   #   depends_on:
   #     - mysql
 
+volumes:
+  mydatabase:
