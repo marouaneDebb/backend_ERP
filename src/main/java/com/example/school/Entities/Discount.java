@@ -6,18 +6,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.time.LocalDate;
+
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Remise {
+public class Discount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idRemise;
-    private Long pourcentage;
+    private Long idDiscount;
+    private String nameDiscount;
     private String description;
+    private String conditionn;
+    private LocalDate dateValidation;
+    private double percentage;
 
-    public Remise(Service service) {
+    public Discount(Service service) {
         this.service = service;
     }
     @ManyToOne

@@ -1,8 +1,6 @@
 package com.example.school.Controllers;
 
-import com.example.school.Entities.Parent;
-import com.example.school.Entities.Remise;
-import com.example.school.Repositories.ParentRepository;
+import com.example.school.Entities.Discount;
 import com.example.school.Repositories.RemiseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,25 +16,27 @@ public class RemiseController {
     @Autowired
     private RemiseRepository remiseRepository;
     @GetMapping
-    public List<Remise> getRemises(){
+    public List<Discount> getRemises(){
         return remiseRepository.findAll();
     }
 
     @GetMapping("/{remiseId}")
-    public Optional<Remise> getRemiseById(@PathVariable Long remiseId){
+    public Optional<Discount> getRemiseById(@PathVariable Long remiseId){
         return remiseRepository.findById(remiseId);
     }
 
     @PostMapping
-    public Remise addRemise(@RequestBody Remise remise){
-        return remiseRepository.save(remise);
+    public Discount addRemise(@RequestBody Discount discount){
+        return remiseRepository.save(discount);
     }
 
     @PutMapping("/remiseId")
-    public void updateRemise(@RequestBody Remise remise, @PathVariable Long remiseId){
+    public void updateRemise(@RequestBody Discount discount, @PathVariable Long remiseId){
         remiseRepository.findById(remiseId).map(remise1 -> {
-            remise1.setDescription(remise.getDescription());
-            remise1.setPourcentage(remise.getPourcentage());
+            remise1.setNameDiscount(discount.getNameDiscount());
+            remise1.setDescription(discount.getDescription());
+//            remise1.setCondition(discount.getCondition());
+//            remise1.setDateValidation(discount.getDateValidation());
             return remiseRepository.save(remise1);
         });
     }

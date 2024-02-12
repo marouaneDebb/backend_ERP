@@ -1,8 +1,6 @@
 package com.example.school.Controllers;
 
-import com.example.school.Entities.Remise;
 import com.example.school.Entities.Service;
-import com.example.school.Repositories.RemiseRepository;
 import com.example.school.Repositories.ServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

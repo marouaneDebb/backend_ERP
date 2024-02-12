@@ -1,17 +1,13 @@
 package com.example.school;
 
-import ch.qos.logback.core.util.DelayStrategy;
 import com.example.school.Entities.*;
 import com.example.school.Repositories.*;
-import org.hibernate.engine.spi.SelfDirtinessTracker;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.nio.file.Paths;
-import java.util.stream.Stream;
 
 @SpringBootApplication
 public class SchoolApplication {
@@ -90,8 +86,8 @@ public class SchoolApplication {
             paiementRepository.save(paiement);
             paiementRepository.save(paiement2);
 
-            Remise remise = new Remise(natation);
-            remiseRepository.save(remise);
+            Discount discount = new Discount(natation);
+            remiseRepository.save(discount);
             serviceRepository.save(natation);
 
 

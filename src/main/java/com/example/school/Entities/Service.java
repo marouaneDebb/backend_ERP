@@ -25,7 +25,7 @@ public class Service {
     private String periodicite;
 
     @OneToMany(mappedBy="service" ,fetch= FetchType.EAGER)
-    List<Remise> remises=new ArrayList<>();
+    List<Discount> discounts =new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
             @JoinTable(joinColumns = @JoinColumn(name = "service"),
