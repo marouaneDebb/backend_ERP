@@ -1,6 +1,6 @@
 package com.example.school.Controllers;
 
-import com.example.school.Entities.Discount;
+import com.example.school.Entities.Remise;
 import com.example.school.Repositories.RemiseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,28 +10,29 @@ import java.util.Optional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/remise")
 public class RemiseController {
     @Autowired
     private RemiseRepository remiseRepository;
-    @GetMapping
-    public List<Discount> getRemises(){
+    @GetMapping("/all")
+    public List<Remise> getRemises(){
         return remiseRepository.findAll();
     }
 
     @GetMapping("/{remiseId}")
-    public Optional<Discount> getRemiseById(@PathVariable Long remiseId){
+    public Optional<Remise> getRemiseById(@PathVariable Long remiseId){
         return remiseRepository.findById(remiseId);
     }
 
-    @PostMapping
-    public Discount addRemise(@RequestBody Discount discount){
+    @PostMapping("/add")
+    public Remise addRemise(@RequestBody Remise discount){
         return remiseRepository.save(discount);
     }
 
     @PutMapping("/remiseId")
-    public void updateRemise(@RequestBody Discount discount, @PathVariable Long remiseId){
+    public void updateRemise(@RequestBody Remise discount, @PathVariable Long remiseId){
         remiseRepository.findById(remiseId).map(remise1 -> {
             remise1.setNameDiscount(discount.getNameDiscount());
             remise1.setDescription(discount.getDescription());

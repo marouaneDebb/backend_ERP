@@ -33,9 +33,12 @@ public class ServiceController {
     @PutMapping("/serviceId")
     public void updateService(@RequestBody Service service, @PathVariable Long serviceId){
         serviceRepository.findById(serviceId).map(service1 -> {
-            service1.setNomService(service.getNomService());
-            service1.setMontant(service.getMontant());
-            service1.setPeriodicite(service.getPeriodicite());
+            service1.setName(service.getName());
+            service1.setPrice(service.getPrice());
+            service1.setPereodicity(service.getPereodicity());
+            service1.setDescription(service.getDescription());
+            service1.setType(service.getType());
+            service1.setStart(service.getStart());
             return serviceRepository.save(service1);
         });
     }

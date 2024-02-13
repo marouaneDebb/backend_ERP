@@ -71,8 +71,8 @@ public class SchoolApplication {
             paiementRepository.save(paiement2);
 
             Service natation = new Service(categorieService);
-            natation.setMontant(23);
-            natation.setNomService("natation");
+            natation.setPrice(23);
+            natation.setName("natation");
             natation.getEleves().add(eleve);
             natation.getEleves().add(eleve2);
             natation.getEleves().add(eleve2);
@@ -86,8 +86,15 @@ public class SchoolApplication {
             paiementRepository.save(paiement);
             paiementRepository.save(paiement2);
 
-            Discount discount = new Discount(natation);
+            Remise discount = new Remise(natation);
+            discount.setPercentage(4.2);
+            discount.setNameDiscount("Lilah");
+            Remise discount2 = new Remise();
+            discount2.setNameDiscount("Aid Adha");
+            discount2.setConditionn("Homme endicap");
+            discount2.setPercentage(5.2);
             remiseRepository.save(discount);
+            remiseRepository.save(discount2);
             serviceRepository.save(natation);
 
 
