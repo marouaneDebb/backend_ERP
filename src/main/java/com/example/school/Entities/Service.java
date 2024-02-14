@@ -17,7 +17,7 @@ import java.util.List;
 public class Service {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idService;
+    private Long id;
     private String name;
     private LocalDate start;
     private String description;
@@ -25,8 +25,9 @@ public class Service {
     private double price;
     private String type;
 
-    @OneToMany(mappedBy="service" ,fetch= FetchType.EAGER)
-    List<Remise> discounts =new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "id_remise")
+    private Remise remise;
 
     @ManyToMany(fetch = FetchType.EAGER)
             @JoinTable(joinColumns = @JoinColumn(name = "service"),
@@ -35,7 +36,7 @@ public class Service {
     List<Eleve> eleves=new ArrayList<>();
 
     @ManyToOne
-    @JoinColumn(name = "categorieServieId",nullable = false)
+    @JoinColumn(name = "categorieServieId")
     private CategorieService categorieService;
 
     public Service(CategorieService categorieService) {

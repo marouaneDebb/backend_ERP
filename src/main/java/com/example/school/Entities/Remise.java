@@ -7,9 +7,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.w3c.dom.stylesheets.LinkStyle;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -28,12 +31,12 @@ public class Remise {
     @DecimalMin(value = "0.0000000001", inclusive = false)
     private double percentage;
 
-    public Remise(Service service) {
-        this.service = service;
-    }
-    @ManyToOne
+//    public Remise(Service service) {
+//        this.service = service;
+//    }
+    @OneToMany(mappedBy="remise" ,fetch= FetchType.EAGER)
 //    @JoinColumn(nullable = false)
     @ToString.Exclude
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Service service;
+    private List<Service> services = new ArrayList<>();
 }

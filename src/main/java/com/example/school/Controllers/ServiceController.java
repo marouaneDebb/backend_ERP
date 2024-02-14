@@ -10,12 +10,13 @@ import java.util.Optional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/service")
 public class ServiceController {
     @Autowired
     private ServiceRepository serviceRepository;
-    @GetMapping
+    @GetMapping("/all")
     public List<Service> getServices(){
         return serviceRepository.findAll();
     }
@@ -25,7 +26,7 @@ public class ServiceController {
         return serviceRepository.findById(serviceId);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public Service addService(@RequestBody Service service){
         return serviceRepository.save(service);
     }

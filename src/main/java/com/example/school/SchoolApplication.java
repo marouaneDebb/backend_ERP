@@ -86,7 +86,7 @@ public class SchoolApplication {
             paiementRepository.save(paiement);
             paiementRepository.save(paiement2);
 
-            Remise discount = new Remise(natation);
+            Remise discount = new Remise();
             discount.setPercentage(4.2);
             discount.setNameDiscount("Lilah");
             Remise discount2 = new Remise();
