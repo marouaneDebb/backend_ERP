@@ -1,0 +1,26 @@
+version: '3'
+services:
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: admin 
+      MYSQL_DATABASE: bd 
+    ports:
+        - "3307:3306"
+    volumes:
+      - school_mydatabase:/var/lib/mysql
+
+  # spring-boot-app:
+  #   build:
+  #     context: C:\Users\AITAHMIDTARIK\Desktop\INBOX\Projet\Etude\Projet_Integre\school
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "8090:8090"
+  #   depends_on:
+  #     - mysql
+#volumes:
+#  - school_mydatabase
+
+volumes:
+  school_mydatabase:
