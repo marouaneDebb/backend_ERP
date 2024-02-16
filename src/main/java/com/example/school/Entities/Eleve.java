@@ -39,7 +39,7 @@ public class Eleve {
     @ManyToOne
     @JoinColumn(name = "parentCIN")
     @ToString.Exclude
-//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Parent parent;
 
     @OneToMany(mappedBy = "eleve",fetch = FetchType.EAGER)
