@@ -4,13 +4,17 @@ package com.example.school.Controllers;
 import com.example.school.Entities.Parent;
 import com.example.school.Repositories.EleveRepository;
 import com.example.school.Repositories.ParentRepository;
+import com.example.school.services.ParentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @CrossOrigin("*")
 @RestController
@@ -18,6 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class ParentController {
     @Autowired
     private ParentRepository parentRepository;
+    @Autowired
+    private ParentService parentService;
     @GetMapping("/all")
     public List<Parent> getParents(){
         return parentRepository.findAll();
@@ -42,6 +48,7 @@ public class ParentController {
             parent1.setAddress(parent.getAddress());
             parent1.setEmail(parent.getEmail());
             parent1.setDateInscription(parent.getDateInscription());
+            parent1.setImage(parent.getImage());
 
             return parentRepository.save(parent1);
         });

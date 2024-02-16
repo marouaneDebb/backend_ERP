@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,16 +17,17 @@ import java.util.List;
 public class Service {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idService;
-    private double montant;
-    public Service(CategorieService categorieService) {
-        this.categorieService = categorieService;
-    }
-    private String nomService;
-    private String periodicite;
+    private Long id;
+    private String name;
+    private LocalDate start;
+    private String description;
+    private String pereodicity;
+    private double price;
+    private String type;
 
-    @OneToMany(mappedBy="service" ,fetch= FetchType.EAGER)
-    List<Remise> remises=new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "id_remise")
+    private Remise remise;
 
     @ManyToMany(fetch = FetchType.EAGER)
             @JoinTable(joinColumns = @JoinColumn(name = "service"),
@@ -34,6 +36,10 @@ public class Service {
     List<Eleve> eleves=new ArrayList<>();
 
     @ManyToOne
-    @JoinColumn(name = "categorieServieId",nullable = false)
+    @JoinColumn(name = "categorieServieId")
     private CategorieService categorieService;
+
+    public Service(CategorieService categorieService) {
+        this.categorieService = categorieService;
+    }
 }

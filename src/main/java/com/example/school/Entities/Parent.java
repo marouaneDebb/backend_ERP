@@ -25,6 +25,7 @@ public class Parent {
     private String phone;
     private LocalDate dateInscription;
     private String address;
+    private String image;
 
     @OneToMany(mappedBy = "parent" ,fetch = FetchType.EAGER)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
