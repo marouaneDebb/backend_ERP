@@ -2,12 +2,14 @@ package com.example.school.Controllers;
 
 import com.example.school.Entities.Eleve;
 import com.example.school.Repositories.EleveRepository;
+import com.example.school.services.EleveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,9 @@ public class EleveController {
 
     @Autowired
     private EleveRepository eleveRepository;
+    @Autowired
+    private EleveService eleveService;
+
     @GetMapping("/all")
     public List<Eleve> getEleves(){
         return eleveRepository.findAll();
@@ -53,4 +58,9 @@ public class EleveController {
         eleveRepository.deleteById(eleveId);
     }
 
+
+    @GetMapping("/student-not-payed")
+    public Map<Eleve, Double> getAllStudentNotPayed(){
+        return eleveService.elevesSansPayer();
+    }
 }
