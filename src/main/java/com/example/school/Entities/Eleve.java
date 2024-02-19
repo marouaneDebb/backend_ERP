@@ -46,7 +46,13 @@ public class Eleve {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     List<Paiement> paiements=new ArrayList<>();
 
-    @ManyToMany(mappedBy = "eleves", fetch = FetchType.EAGER)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    List<Service> services=new ArrayList<>();
+//    @ManyToMany(mappedBy = "eleves", fetch = FetchType.EAGER)
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+//    List<Service> services=new ArrayList<>();
+
+    @OneToMany(mappedBy = "eleve",fetch = FetchType.EAGER)
+
+    private List<EtatService> etatServices = new ArrayList<>();
+
+
 }

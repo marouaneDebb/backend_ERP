@@ -2,6 +2,7 @@ package com.example.school;
 
 import com.example.school.Entities.*;
 import com.example.school.Repositories.*;
+import com.example.school.services.EleveService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,7 +29,9 @@ public class SchoolApplication {
            ServiceRepository serviceRepository,
            FactureRepository factureRepository,
            RemiseRepository remiseRepository,
-           CategorieServiceRepository categorieServiceRepository
+           CategorieServiceRepository categorieServiceRepository,
+           EtatServiceRepository etatServiceRepository,
+           EleveService eleveService
 
    ){
         return args -> {
@@ -55,13 +58,13 @@ public class SchoolApplication {
 //            eleve.setParent(parent);
 //
 //
-//            Eleve eleve2 = new Eleve();
-//            eleve2.setFirstName("TADFj");
-//            eleve2.setLastName("KIKI");
+            Eleve eleve2 = new Eleve();
+            eleve2.setFirstName("TADFj");
+            eleve2.setLastName("KIKI");
 //            eleve2.setParent(parent);
-//            eleveRepository.save(eleve2);
+            eleveRepository.save(eleve2);
 //            eleveRepository.save(eleve);
-//
+
 //
 //            Paiement paiement = new Paiement(eleve);
 //            paiement.setMontant(23.3);
@@ -70,13 +73,13 @@ public class SchoolApplication {
 //            paiementRepository.save(paiement);
 //            paiementRepository.save(paiement2);
 //
-//            Service natation = new Service(categorieService);
-//            natation.setPrice(23);
-//            natation.setName("natation");
+            Service natation = new Service();
+            natation.setPrice(23);
+            natation.setName("natation");
 //            natation.getEleves().add(eleve);
 //            natation.getEleves().add(eleve2);
 //            natation.getEleves().add(eleve2);
-//            serviceRepository.save(natation);
+            serviceRepository.save(natation);
 //
 //            Facture facture = new Facture();
 //            facture.setMontant(232);
@@ -97,29 +100,54 @@ public class SchoolApplication {
 //            remiseRepository.save(discount2);
 //            serviceRepository.save(natation);
 
+            EtatService etatService = new EtatService();
+            EtatService etatService2 = new EtatService();
+            etatService.setService(natation);
+            etatService.setEleve(eleve2);
+            etatService.setPayer(false);
 
-            remiseRepository.findAll().forEach(p->{
-                System.out.println(p);
-            });
-            factureRepository.findAll().forEach(p->{
-                System.out.println(p);
-            });
-
-            serviceRepository.findAll().forEach(p->{
-                System.out.println(p);
-            });
+            etatService2.setService(natation);
+            etatService2.setEleve(eleve2);
+            etatServiceRepository.save(etatService);
+            etatServiceRepository.save(etatService2);
 
 
-            paiementRepository.findAll().forEach(p->{
-                System.out.println(p);
+            eleveService.elevesSansPayer().forEach((p,s)->{
+                System.out.println("eleve: "+p+", le prix: "+s);
+
             });
 
-            eleveRepository.findAll().forEach(p->{
-                System.out.println(p);
-            });
- parentRepository.findAll().forEach(p->{
-                System.out.println(p);
-            });
+//            etatServiceRepository.findEtatServicesByPayer(false).forEach(p->{
+//                System.out.println(p);
+//
+//            });
+//            etatServiceRepository.findAll().forEach(p->{
+//                System.out.println(p);
+//            });
+//
+//
+//            remiseRepository.findAll().forEach(p->{
+//                System.out.println(p);
+//            });
+//            factureRepository.findAll().forEach(p->{
+//                System.out.println(p);
+//            });
+//
+//            serviceRepository.findAll().forEach(p->{
+//                System.out.println(p);
+//            });
+//
+//
+//            paiementRepository.findAll().forEach(p->{
+//                System.out.println(p);
+//            });
+//
+//            eleveRepository.findAll().forEach(p->{
+//                System.out.println(p);
+//            });
+// parentRepository.findAll().forEach(p->{
+//                System.out.println(p);
+//            });
 //
         };
    }
