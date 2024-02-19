@@ -29,15 +29,19 @@ public class Service {
     @JoinColumn(name = "id_remise")
     private Remise remise;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-            @JoinTable(joinColumns = @JoinColumn(name = "service"),
-                    inverseJoinColumns =@JoinColumn(name ="eleve") )
-    @ToString.Exclude
-    List<Eleve> eleves=new ArrayList<>();
+//    @ManyToMany(fetch = FetchType.EAGER)
+//            @JoinTable(joinColumns = @JoinColumn(name = "service"),
+//                    inverseJoinColumns =@JoinColumn(name ="eleve") )
+//    @ToString.Exclude
+//    List<Eleve> eleves=new ArrayList<>();
 
     @ManyToOne
-    @JoinColumn(name = "categorieServieId")
+    @JoinColumn(name = "id_categorie")
     private CategorieService categorieService;
+
+    @OneToMany(mappedBy = "service",fetch = FetchType.EAGER)
+    private List<EtatService> etatServices = new ArrayList<>();
+
 
     public Service(CategorieService categorieService) {
         this.categorieService = categorieService;
