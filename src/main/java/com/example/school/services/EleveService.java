@@ -27,4 +27,8 @@ public class EleveService {
         return elevesSP;
     }
 
+    public List<Eleve> getElevesByParentId(String id) {
+        return eleveRepository.findElevesByParentCIN(id);
+    }
+
 }

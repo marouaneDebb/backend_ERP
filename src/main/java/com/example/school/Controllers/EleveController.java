@@ -63,4 +63,9 @@ public class EleveController {
     public Map<Eleve, Double> getAllStudentNotPayed(){
         return eleveService.elevesSansPayer();
     }
+
+    @GetMapping("/parentid/{id}")
+    public List<Eleve> getElevesByIdParent(@PathVariable String id){
+        return eleveService.getElevesByParentId(id);
+    }
 }

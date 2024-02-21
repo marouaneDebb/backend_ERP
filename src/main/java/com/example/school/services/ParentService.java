@@ -19,4 +19,11 @@ public class ParentService {
         return parentRepository.save(parent);
     }
 
+
+    public Parent getParentById(String id) {
+        return parentRepository.findById(id).get();
+    }
+
+
+
 }

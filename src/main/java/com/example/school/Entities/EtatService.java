@@ -23,7 +23,7 @@ public class EtatService {
     @ManyToOne
     @JoinColumn(nullable = false)
     @ToString.Exclude
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Service service;
 
     @ManyToOne
