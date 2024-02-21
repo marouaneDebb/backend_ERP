@@ -24,7 +24,7 @@ public class Service {
     private String description;
     private String pereodicity;
     private double price;
-    private String type;
+    private ServiceType type;
 
     @ManyToOne
     @JoinColumn(name = "id_remise")

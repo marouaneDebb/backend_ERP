@@ -52,6 +52,15 @@ public class SchoolApplication {
             categorieServiceRepository.save(categorieService);
             categorieServiceRepository.save(categorieService2);
 
+
+            Service natation = new Service();
+            natation.setPrice(23);
+            natation.setName("natation");
+            natation.setType(ServiceType.OBLICATORY);
+            System.out.println(natation.getType());
+            serviceRepository.save(natation);
+//
+
             Eleve eleve = new Eleve();
             eleve.setFirstName("Tati");
             eleve.setLastName("TATITO");
@@ -59,11 +68,16 @@ public class SchoolApplication {
 
 //
             Eleve eleve2 = new Eleve();
+            Eleve eleve3 = new Eleve();
             eleve2.setFirstName("TADFj");
             eleve2.setLastName("KIKI");
             eleve2.setParent(parent);
-            eleveRepository.save(eleve2);
-            eleveRepository.save(eleve);
+            eleve3.setLastName("AIT AHMID");
+            eleve3.setFirstName("Tarik");
+            eleve3.setParent(parent2);
+            eleveService.addEleve(eleve3);
+            eleveService.addEleve(eleve2);
+            eleveService.addEleve(eleve);
 
 
             Paiement paiement = new Paiement(eleve);
@@ -73,14 +87,8 @@ public class SchoolApplication {
             paiementRepository.save(paiement);
             paiementRepository.save(paiement2);
 //
-            Service natation = new Service();
-            natation.setPrice(23);
-            natation.setName("natation");
-//            natation.getEleves().add(eleve);
-//            natation.getEleves().add(eleve2);
-//            natation.getEleves().add(eleve2);
-            serviceRepository.save(natation);
-//
+
+
             Facture facture = new Facture();
             facture.setMontant(232);
             factureRepository.save(facture);
@@ -112,10 +120,7 @@ public class SchoolApplication {
             etatServiceRepository.save(etatService2);
 
 
-            eleveService.elevesSansPayer().forEach((p,s)->{
-                System.out.println("eleve: "+p+", le prix: "+s);
 
-            });
             System.out.println(eleveService.getElevesByParentId("PA238948"));
 
 
@@ -144,9 +149,9 @@ public class SchoolApplication {
 //                System.out.println(p);
 //            });
 //
-//            eleveRepository.findAll().forEach(p->{
-//                System.out.println(p);
-//            });
+            eleveRepository.findAll().forEach(p->{
+                System.out.println(p);
+            });
 // parentRepository.findAll().forEach(p->{
 //                System.out.println(p);
 //            });
