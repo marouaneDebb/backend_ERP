@@ -1,6 +1,8 @@
 package com.example.school.Controllers;
 
 import com.example.school.Entities.Eleve;
+import com.example.school.Entities.EtatService;
+import com.example.school.Entities.Service;
 import com.example.school.Repositories.EleveRepository;
 import com.example.school.services.EleveService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,10 +39,9 @@ public class EleveController {
 
     @PostMapping("/add")
     public Eleve addEleve(@RequestBody Eleve eleve){
-        LocalDate date = eleve.getDateNaissance();
-        eleve.setDateNaissance(date);
 
-        return eleveRepository.save(eleve);
+
+        return eleveService.addEleve(eleve);
     }
 
     @PutMapping("/eleveId")
@@ -59,8 +60,10 @@ public class EleveController {
     }
 
 
-    @GetMapping("/student-not-payed")
-    public Map<Eleve, Double> getAllStudentNotPayed(){
-        return eleveService.elevesSansPayer();
+
+
+    @GetMapping("/parentid/{id}")
+    public List<Eleve> getElevesByIdParent(@PathVariable String id){
+        return eleveService.getElevesByParentId(id);
     }
 }

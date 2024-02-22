@@ -1,5 +1,6 @@
 package com.example.school.Entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,7 +24,7 @@ public class Service {
     private String description;
     private String pereodicity;
     private double price;
-    private String type;
+    private ServiceType type;
 
     @ManyToOne
     @JoinColumn(name = "id_remise")
@@ -40,6 +41,7 @@ public class Service {
     private CategorieService categorieService;
 
     @OneToMany(mappedBy = "service",fetch = FetchType.EAGER)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<EtatService> etatServices = new ArrayList<>();
 
 

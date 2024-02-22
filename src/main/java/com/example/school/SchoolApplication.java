@@ -35,70 +35,78 @@ public class SchoolApplication {
 
    ){
         return args -> {
-//            Parent parent = new Parent();
-//            Parent parent2 = new Parent();
-//            parent.setCIN("PA238948");
-//            parent2.setCIN("PA238949");
-//            parent.setFirstName("TTo");
-//            parent2.setFirstName("Ziyad");
-//            parent.setLastName("KHOKI");
-//            parent2.setLastName("KHAWAKHI");
-//            parentRepository.save(parent);
-//            parentRepository.save(parent2);
-////
-//            CategorieService categorieService = new CategorieService();
-//            CategorieService categorieService2 = new CategorieService();
-//            categorieService.setNomCategorie("Ext");
-//            categorieServiceRepository.save(categorieService);
-//            categorieServiceRepository.save(categorieService2);
+            Parent parent = new Parent();
+            Parent parent2 = new Parent();
+            parent.setCIN("PA238948");
+            parent2.setCIN("PA238949");
+            parent.setFirstName("TTo");
+            parent2.setFirstName("Ziyad");
+            parent.setLastName("KHOKI");
+            parent2.setLastName("KHAWAKHI");
+            parentRepository.save(parent);
+            parentRepository.save(parent2);
 //
-//            Eleve eleve = new Eleve();
-//            eleve.setFirstName("Tati");
-//            eleve.setLastName("TATITO");
-//            eleve.setParent(parent);
-//
-//
-            Eleve eleve2 = new Eleve();
-            eleve2.setFirstName("TADFj");
-            eleve2.setLastName("KIKI");
-//            eleve2.setParent(parent);
-            eleveRepository.save(eleve2);
-//            eleveRepository.save(eleve);
+            CategorieService categorieService = new CategorieService();
+            CategorieService categorieService2 = new CategorieService();
+            categorieService.setNomCategorie("Ext");
+            categorieServiceRepository.save(categorieService);
+            categorieServiceRepository.save(categorieService2);
 
-//
-//            Paiement paiement = new Paiement(eleve);
-//            paiement.setMontant(23.3);
-//            Paiement paiement2 = new Paiement(eleve2);
-//            paiement.setMontant(23458.3);
-//            paiementRepository.save(paiement);
-//            paiementRepository.save(paiement2);
-//
+
             Service natation = new Service();
             natation.setPrice(23);
             natation.setName("natation");
-//            natation.getEleves().add(eleve);
-//            natation.getEleves().add(eleve2);
-//            natation.getEleves().add(eleve2);
+            natation.setType(ServiceType.OBLICATORY);
+            System.out.println(natation.getType());
             serviceRepository.save(natation);
 //
-//            Facture facture = new Facture();
-//            facture.setMontant(232);
-//            factureRepository.save(facture);
-//            paiement.setFacture(facture);
-//            paiement2.setFacture(facture);
-//            paiementRepository.save(paiement);
-//            paiementRepository.save(paiement2);
+
+            Eleve eleve = new Eleve();
+            eleve.setFirstName("Tati");
+            eleve.setLastName("TATITO");
+            eleve.setParent(parent);
+
 //
-//            Remise discount = new Remise();
-//            discount.setPercentage(4.2);
-//            discount.setNameDiscount("Lilah");
-//            Remise discount2 = new Remise();
-//            discount2.setNameDiscount("Aid Adha");
-//            discount2.setConditionn("Homme endicap");
-//            discount2.setPercentage(5.2);
-//            remiseRepository.save(discount);
-//            remiseRepository.save(discount2);
-//            serviceRepository.save(natation);
+            Eleve eleve2 = new Eleve();
+            Eleve eleve3 = new Eleve();
+            eleve2.setFirstName("TADFj");
+            eleve2.setLastName("KIKI");
+            eleve2.setParent(parent);
+            eleve3.setLastName("AIT AHMID");
+            eleve3.setFirstName("Tarik");
+            eleve3.setParent(parent2);
+            eleveService.addEleve(eleve3);
+            eleveService.addEleve(eleve2);
+            eleveService.addEleve(eleve);
+
+
+            Paiement paiement = new Paiement(eleve);
+            paiement.setMontant(23.3);
+            Paiement paiement2 = new Paiement(eleve2);
+            paiement.setMontant(23458.3);
+            paiementRepository.save(paiement);
+            paiementRepository.save(paiement2);
+//
+
+
+            Facture facture = new Facture();
+            facture.setMontant(232);
+            factureRepository.save(facture);
+            paiement.setFacture(facture);
+            paiement2.setFacture(facture);
+            paiementRepository.save(paiement);
+            paiementRepository.save(paiement2);
+
+            Remise discount = new Remise();
+            discount.setPercentage(4.2);
+            discount.setNameDiscount("Lilah");
+            Remise discount2 = new Remise();
+            discount2.setNameDiscount("Aid Adha");
+            discount2.setConditionn("Homme endicap");
+            discount2.setPercentage(5.2);
+            remiseRepository.save(discount);
+            remiseRepository.save(discount2);
+            serviceRepository.save(natation);
 
             EtatService etatService = new EtatService();
             EtatService etatService2 = new EtatService();
@@ -112,10 +120,9 @@ public class SchoolApplication {
             etatServiceRepository.save(etatService2);
 
 
-            eleveService.elevesSansPayer().forEach((p,s)->{
-                System.out.println("eleve: "+p+", le prix: "+s);
 
-            });
+            System.out.println(eleveService.getElevesByParentId("PA238948"));
+
 
 //            etatServiceRepository.findEtatServicesByPayer(false).forEach(p->{
 //                System.out.println(p);
@@ -142,9 +149,9 @@ public class SchoolApplication {
 //                System.out.println(p);
 //            });
 //
-//            eleveRepository.findAll().forEach(p->{
-//                System.out.println(p);
-//            });
+            eleveRepository.findAll().forEach(p->{
+                System.out.println(p);
+            });
 // parentRepository.findAll().forEach(p->{
 //                System.out.println(p);
 //            });
