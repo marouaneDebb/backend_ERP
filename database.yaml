@@ -9,7 +9,7 @@ services:
     ports:
         - "3307:3306"
     volumes:
-      - school_mydatabase:/var/lib/mysql
+      - school_school_mydatabase:/var/lib/mysql
 
   # spring-boot-app:
   #   build:
@@ -23,4 +23,4 @@ services:
 #  - school_mydatabase
 
 volumes:
-  school_mydatabase:
+  school_school_mydatabase:
