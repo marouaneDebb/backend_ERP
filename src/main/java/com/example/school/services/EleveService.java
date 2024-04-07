@@ -29,7 +29,7 @@ public class EleveService {
       eleve.setDateNaissance(date);
         eleveRepository.save(eleve);
         List<com.example.school.Entities.Service> obligatoryServices = serviceRepository.findAll().stream()
-                .filter(service -> ServiceType.OBLICATORY.equals(service.getType()))
+                .filter(service -> ServiceType.OBLIGATORY.equals(service.getType()))
                 .collect(Collectors.toList());
         obligatoryServices.forEach(p->{
             EtatService etatService = new EtatService();
